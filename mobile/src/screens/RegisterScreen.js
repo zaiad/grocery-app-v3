@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {Button, Input} from 'react-native-elements';
+import {AsyncStorage} from 'react-native';
 
 // Now you can access your environment variables like so:
 
@@ -12,25 +13,25 @@ const RegisterScreen = ({navigation}) => {
 
   const handleRegister = async () => {
     if (!name) {
-        alert('Please enter your name');
-        return;
-      }
-    
-      if (!email) {
-        alert('Please enter your email');
-        return;
-      }
-    
-      if (!password) {
-        alert('Please enter your password');
-        return;
-      }
-    
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address');
-        return;
-      }
+      alert('Please enter your name');
+      return;
+    }
+
+    if (!email) {
+      alert('Please enter your email');
+      return;
+    }
+
+    if (!password) {
+      alert('Please enter your password');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
     try {
       const response = await axios.post(
         `http://192.168.3.190:1337/api/register`,
@@ -40,14 +41,12 @@ const RegisterScreen = ({navigation}) => {
           password,
         },
       );
-
       if (response.status === 201) {
-        console.error(response);
-
-        // navigation.navigate('HomeScreen');
+        return navigation.navigate('Verify', {email: email});
       }
+      if (response.status === 400) alert('Email already exist');
     } catch (error) {
-      console.error(error);
+      alert('Error while we try register , Please try again');
     }
   };
 
