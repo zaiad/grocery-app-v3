@@ -2,25 +2,47 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {Button, Input} from 'react-native-elements';
-import {IP} from 'react-native-dotenv';
 
 // Now you can access your environment variables like so:
 
-const LoginScreen = ({navigation}) => {
+const RegisterScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  
-  const handleRegister = async () => {
-    try {
-      const response = await axios.post(`http://192.168.3.190:1337/api/login`, {
-        name,
-        email,
-        password,
-      });
 
-      if (response.status === 200) {
-        console.error(response.data.acces_token);
+  const handleRegister = async () => {
+    if (!name) {
+        alert('Please enter your name');
+        return;
+      }
+    
+      if (!email) {
+        alert('Please enter your email');
+        return;
+      }
+    
+      if (!password) {
+        alert('Please enter your password');
+        return;
+      }
+    
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address');
+        return;
+      }
+    try {
+      const response = await axios.post(
+        `http://192.168.3.190:1337/api/register`,
+        {
+          name,
+          email,
+          password,
+        },
+      );
+
+      if (response.status === 201) {
+        console.error(response);
 
         // navigation.navigate('HomeScreen');
       }
@@ -34,7 +56,7 @@ const LoginScreen = ({navigation}) => {
       <Text style={styles.title}>Register</Text>
       <Input
         placeholder="Full Name"
-        value={email}
+        value={name}
         onChangeText={setName}
         inputContainerStyle={styles.inputContainer}
         inputStyle={styles.input}
@@ -139,4 +161,4 @@ const styles = {
   },
 };
 
-export default LoginScreen;
+export default RegisterScreen;
