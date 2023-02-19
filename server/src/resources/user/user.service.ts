@@ -48,8 +48,7 @@ class UserService {
         next: NextFunction
     ): Promise<boolean | void> {
         try {
-            const checkEmail = await this.User.findOne({ email });
-            if (checkEmail) return next(createError("Email already exist", 400));
+
 
             const otp = generateOTP();
             const hachedPassword = await bcrypt.hash(password, 10);
@@ -62,7 +61,6 @@ class UserService {
                 isVerified: false,
             });
 
-            if (!user) return next(createError("Can't register , try again", 400));
 
             await sendConfirmationEmail(name, email, otp, next);
 
@@ -74,20 +72,21 @@ class UserService {
 
     public verifyOtp = async (
         email: string,
-        otpCode: number,
+        otp: string,
         next: NextFunction
     ) => {
         try {
             const user = await this.User.findOne({ email });
             if (!user) return next(createError("User not found", 401));
 
-            if (user.otp !== otpCode) return false;
+            if (+user.otp != +otp) return false;
 
             user.isVerified = true;
             await user.save();
+
             return true;
         } catch (error) {
-            return next(error);
+            next(error);
         }
     };
 }

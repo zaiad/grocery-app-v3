@@ -24,7 +24,9 @@ const ErrorHandler = (
 
     const errStatus = err.statusCode || 500;
     let errMsg = err.message || "Something went wrong";
-    expectedErrosMessage.includes(errMsg) ? errMsg = err.message : errMsg = "Something went wrong";
+    /* Checking if the error message is in the expectedErrosMessage array. If it is, it will return the
+    error message. If it is not, it will return "Something went wrong". */
+    // expectedErrosMessage.includes(errMsg) ? errMsg = err.message : errMsg = "Something went wrong";
 
     return res.status(errStatus).json({
         success: false,

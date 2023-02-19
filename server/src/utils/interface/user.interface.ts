@@ -5,7 +5,7 @@ export interface UserInterface extends Document {
     email: string;
     password: string;
     refresh_token: string;
-    otp: number;
+    otp: string;
     isVerified: boolean;
 }
 

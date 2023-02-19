@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {Button, Input} from 'react-native-elements';
-import {AsyncStorage} from 'react-native';
+import {validate} from '../utils/validator';
 
 // Now you can access your environment variables like so:
 
@@ -10,31 +10,16 @@ const RegisterScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-
+  const [err, setError] = useState({name: '', email: '', password: ''});
   const handleRegister = async () => {
-    if (!name) {
-      alert('Please enter your name');
-      return;
+    result = validate(name, email, password);
+    if (result) {
+      setError(result);
     }
 
-    if (!email) {
-      alert('Please enter your email');
-      return;
-    }
-
-    if (!password) {
-      alert('Please enter your password');
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      alert('Please enter a valid email address');
-      return;
-    }
     try {
       const response = await axios.post(
-        `http://192.168.3.190:1337/api/register`,
+        `http://192.168.43.66:1337/api/register`,
         {
           name,
           email,
@@ -47,8 +32,6 @@ const RegisterScreen = ({navigation}) => {
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 409) {
         alert('Email already exist');
-      } else {
-        alert('Please Refresh The Page');
       }
     }
   };
@@ -62,6 +45,7 @@ const RegisterScreen = ({navigation}) => {
         onChangeText={setName}
         inputContainerStyle={styles.inputContainer}
         inputStyle={styles.input}
+        errorMessage={err.name} // Add error message to display under the field
       />
       <Input
         placeholder="Email"
@@ -69,6 +53,7 @@ const RegisterScreen = ({navigation}) => {
         onChangeText={setEmail}
         inputContainerStyle={styles.inputContainer}
         inputStyle={styles.input}
+        errorMessage={err.email} // Add error message to display under the field
       />
       <Input
         placeholder="Password"
@@ -78,6 +63,7 @@ const RegisterScreen = ({navigation}) => {
         autoCapitalize="none"
         inputContainerStyle={styles.inputContainer}
         inputStyle={styles.input}
+        errorMessage={err.password} // Add error message to display under the field
       />
       <View style={styles.btncontainer}>
         <View style={styles.buttonWrapper}>

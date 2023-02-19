@@ -1,3 +1,4 @@
+import UserModel from "./user.model";
 import { createError } from "../../utils/error/custom.error";
 import UserService from "./user.service";
 import { Router, Request, Response, NextFunction } from "express";
@@ -10,7 +11,8 @@ interface Token {
 
 class UserController {
     private UserService = new UserService();
-    private costumSession: any;
+    private User = UserModel;
+
 
     public login = async (
         req: Request,
@@ -35,23 +37,26 @@ class UserController {
         try {
             const { name, email, password } = req.body;
 
-            const registerResult = await this.UserService.register(
-                name,
-                email,
-                password,
-                next
-            );
-            if (registerResult) {
-                this.costumSession = req.session as Session & { email: string };
-
-                this.costumSession.email = email;
-                return res.status(201).json({ message: this.costumSession.email });
+            // Check if user already exists
+            const existingUser = await this.User.findOne({ email });
+            if (existingUser) {
+                return next(createError("Email already exists", 409));
             }
-            next();
+
+            // Create new user
+            const newUser = await this.UserService.register(name, email, password, next);
+            if (!newUser) {
+                return next(createError("Could not register user, please try again", 400));
+            }
+
+            // Send response with success status
+            res.status(201).json({ success: true });
+
         } catch (error) {
             return next(error);
         }
     };
+
 
     public verifyAccount = async (
         req: Request,
@@ -59,13 +64,13 @@ class UserController {
         next: NextFunction
     ) => {
         try {
-            const { otp } = req.body;
-            const userEmail = this.costumSession.email;
+            const { otp, email } = req.body;
 
-            const user = await this.UserService.verifyOtp(userEmail, otp, next);
+
+            const user = await this.UserService.verifyOtp(email, otp, next);
             if (!user) return next(createError("Invalid OTP", 400));
 
-            return res.json({ message: "You account is activated" });
+            return res.status(200).json({ message: "You account is activated" });
         } catch (error) {
             return next(error);
         }

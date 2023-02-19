@@ -24,9 +24,8 @@ const UserSchema: Schema = new Schema({
         default: ''
     },
     otp: {
-        type: Number,
+        type: String,
         required: false,
-        default: '',
     },
     isVerified: {
         type: Boolean,
