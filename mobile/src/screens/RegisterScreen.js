@@ -44,9 +44,12 @@ const RegisterScreen = ({navigation}) => {
       if (response.status === 201) {
         return navigation.navigate('Verify', {email: email});
       }
-      if (response.status === 400) alert('Email already exist');
     } catch (error) {
-      alert('Error while we try register , Please try again');
+      if (axios.isAxiosError(error) && error.response?.status === 409) {
+        alert('Email already exist');
+      } else {
+        alert('Please Refresh The Page');
+      }
     }
   };
 

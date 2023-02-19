@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import {AsyncStorage} from 'react-native';
 
-const OtpScreen = ({route}) => {
+const OtpScreen = ({route, navigation}) => {
   const [code, setCode] = useState();
   const {email} = route.params;
 
@@ -18,19 +18,17 @@ const OtpScreen = ({route}) => {
       const response = await axios.post(
         `http://192.168.3.190:1337/api/verify-otp`,
         {
-          code,
+          otp: code,
           email,
         },
       );
       if (response.status === 401)
         alert('Please try to register with another email adress');
       if (response.status === 400) alert('Invalid OTP Code');
-      if (response.status === 200) alert('seccus register');
+      if (response.status === 200) navigation.navigate('Login');
 
-      console.error(response);
     } catch (error) {
-      // alert('Error while we try register , Please try again')
-      console.error(error);
+      if(error.response?.status === 400) alert('Invalid OTP')
     }
   };
 
