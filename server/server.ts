@@ -15,7 +15,9 @@ import userRouter from './src/resources/user/user.route'
 import ErrorHandler from "./src/middleware/error/error.handler";
 
 const app = express();
-
+app.get('/',(req,res)=>{
+  res.send('hello')
+})
 
 app.use(session({
   secret: 'my secret',
@@ -25,7 +27,7 @@ app.use(session({
 
 app.use(helmet());
 app.use(cookieParser());
-app.use(cors({ credentials: true, origin: "http://localhost:3000", }));
+app.use(cors());
 app.use(express.json());
 
 app.use('/api', userRouter)

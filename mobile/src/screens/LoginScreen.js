@@ -2,27 +2,24 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {Button, Input} from 'react-native-elements';
-import dotenv from 'dotenv';
-dotenv.config();
+import {IP} from 'react-native-dotenv';
 
 // Now you can access your environment variables like so:
 
 const LoginScreen = ({navigation}) => {
-  const IP = process.env.IP;
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const handleLogin = async () => {
     try {
-      const response = await axios.post(`http://${IP}:1337/api/login`, {
+      const response = await axios.post(`http://192.168.3.190:1337/api/login`, {
         email: email,
         password: password,
       });
 
       if (response.status === 200) {
-        
-        navigation.navigate('HomeScreen');
+        console.error(response.data.acces_token);
+
+        // navigation.navigate('HomeScreen');
       }
     } catch (error) {
       console.error(error);
@@ -48,12 +45,25 @@ const LoginScreen = ({navigation}) => {
         inputContainerStyle={styles.inputContainer}
         inputStyle={styles.input}
       />
-      <Button
-        title="Login"
-        onPress={handleLogin}
-        buttonStyle={styles.button}
-        titleStyle={styles.buttonTitle}
-      />
+      <View style={styles.btncontainer}>
+        <View style={styles.buttonWrapper}>
+          <Button
+            title="Login"
+            onPress={handleLogin}
+            buttonStyle={styles.button}
+            titleStyle={styles.buttonTitle}
+          />
+        </View>
+
+        <View style={styles.buttonWrapper}>
+          <Button
+            title="Register"
+            onPress={() => navigation.navigate('Register')}
+            buttonStyle={styles.button}
+            titleStyle={styles.buttonTitle}
+          />
+        </View>
+      </View>
       <TouchableOpacity style={styles.forgotPassword}>
         <Text style={styles.forgotPasswordText}>Forgot password?</Text>
       </TouchableOpacity>
@@ -102,6 +112,24 @@ const styles = {
   },
   forgotPasswordText: {
     color: '#008080',
+  },
+  btncontainer: {
+    flex: 1,
+    justifyContent: 'row',
+  },
+  btncontainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 10,
+    marginBottom: 20,
+  },
+  buttonWrapper: {
+    flex: 1,
+    marginHorizontal: 5,
+  },
+
+  buttonTitle: {
+    fontSize: 18,
   },
 };
 

@@ -20,6 +20,7 @@
     "react-native": "^0.71.1",
     "react-native-counter-input": "^1.0.0",
     "react-native-dashed-line": "^1.1.0",
+    "react-native-dotenv": "^3.4.7",
     "react-native-element": "^1.2.1",
     "react-native-elements": "^3.4.3",
     "react-native-safe-area-context": "^3.3.2",
