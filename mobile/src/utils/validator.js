@@ -20,3 +20,19 @@ export const validate = (name, email, password) => {
     return errors;
   };
   
+
+  export const validateLogin = (email,password)=>{
+    const errors = {};
+  
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      errors.email = 'Please enter a valid email address';
+    }
+  
+    if (password.length < 3) {
+      errors.password = 'Password must be at least 3 characters';
+    }
+  
+    return errors;
+
+  }

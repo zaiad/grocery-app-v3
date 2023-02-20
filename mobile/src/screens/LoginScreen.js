@@ -5,10 +5,17 @@ import {Button, Input} from 'react-native-elements';
 import {storeUserSession, getUserSession} from '../utils/store.token';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import {validateLogin} from '../utils/validator.js';
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [err, setError] = useState({password: '', email: ''});
+
   const handleLogin = async () => {
+    result = validateLogin(email, password);
+    if (result) {
+      setError(result);
+    }
     try {
       const response = await axios.post(`http://192.168.43.66:1337/api/login`, {
         email,
@@ -20,16 +27,12 @@ const LoginScreen = ({navigation}) => {
         const {refresh_token} = response.data;
 
         await storeUserSession(acces_token, refresh_token);
-
-        const t = await AsyncStorage.getItem('acces_token');
-
-        const userToken = JSON.parse(t);
-        const {accessToken} = userToken;
-
-        console.error(accessToken);
+        navigation.navigate('Register');
       }
+      console.error(response)
     } catch (error) {
-      if(error.response.status ===401) alert('wrong credentials ')
+      // if (error.response.status === 401) alert('wrong credentials ');
+      alert(error.response.data.message)
     }
   };
 
@@ -42,6 +45,7 @@ const LoginScreen = ({navigation}) => {
         onChangeText={setEmail}
         inputContainerStyle={styles.inputContainer}
         inputStyle={styles.input}
+        errorMessage={err.email}
       />
       <Input
         placeholder="Password"
@@ -51,6 +55,7 @@ const LoginScreen = ({navigation}) => {
         autoCapitalize="none"
         inputContainerStyle={styles.inputContainer}
         inputStyle={styles.input}
+        errorMessage={err.password} // Add error message to display under the field
       />
       <View style={styles.btncontainer}>
         <View style={styles.buttonWrapper}>
