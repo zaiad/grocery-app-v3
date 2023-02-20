@@ -19,7 +19,7 @@ export default function ProfileScreen({navigation}) {
               flex: 1,
               alignItems: 'center',
               justifyContent: 'center',
-            }}></View>
+            }}><Text>Profile screen</Text></View>
         </View>
       </ScrollView>
       <Footer navigation={navigation} />
