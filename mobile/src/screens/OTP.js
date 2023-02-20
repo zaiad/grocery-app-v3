@@ -7,7 +7,6 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import {AsyncStorage} from 'react-native';
 
 const OtpScreen = ({route, navigation}) => {
   const [code, setCode] = useState();

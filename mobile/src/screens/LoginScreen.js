@@ -2,27 +2,34 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {Button, Input} from 'react-native-elements';
-import {IP} from 'react-native-dotenv';
-
-// Now you can access your environment variables like so:
+import {storeUserSession, getUserSession} from '../utils/store.token';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const handleLogin = async () => {
     try {
-      const response = await axios.post(`http://192.168.3.190:1337/api/login`, {
-        email: email,
-        password: password,
+      const response = await axios.post(`http://192.168.43.66:1337/api/login`, {
+        email,
+        password,
       });
 
       if (response.status === 200) {
-        console.error(response.data.acces_token);
+        const {acces_token} = response.data;
+        const {refresh_token} = response.data;
 
-        // navigation.navigate('HomeScreen');
+        await storeUserSession(acces_token, refresh_token);
+
+        const t = await AsyncStorage.getItem('acces_token');
+
+        const userToken = JSON.parse(t);
+        const {accessToken} = userToken;
+
+        console.error(accessToken);
       }
     } catch (error) {
-      console.error(error);
+      if(error.response.status ===401) alert('wrong credentials ')
     }
   };
 
