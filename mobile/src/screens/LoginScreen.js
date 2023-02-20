@@ -27,11 +27,9 @@ const LoginScreen = ({navigation}) => {
         const {refresh_token} = response.data;
 
         await storeUserSession(acces_token, refresh_token);
-        navigation.navigate('Register');
+        navigation.navigate('Home');
       }
-      console.error(response);
     } catch (error) {
-      // if (error.response.status === 401) alert('wrong credentials ');
       alert(error.response.data.message);
     }
   };

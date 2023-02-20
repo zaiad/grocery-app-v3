@@ -19,7 +19,7 @@ export default function WishListScreen({navigation}) {
               flex: 1,
               alignItems: 'center',
               justifyContent: 'center',
-            }}></View>
+            }}><Text>Wish List Screen</Text></View>
         </View>
       </ScrollView>
       <Footer navigation={navigation} />
