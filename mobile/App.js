@@ -1,5 +1,13 @@
 import * as React from 'react';
-import {Button, View, Text, StyleSheet, ActivityIndicator} from 'react-native';
+import {
+  Button,
+  View,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+  AppState,
+  BackHandler,
+} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -14,13 +22,20 @@ import WishListScreen from './src/screens/WishListScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import {store} from './src/redux/store';
 import {Provider} from 'react-redux';
-import api from './src/utils/api';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [initialRouteName, setInitialRouteName] = React.useState('Login');
+  const [initialRouteName, setInitialRouteName] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(true);
+  const [appState, setAppState] = React.useState('active');
+  React.useEffect(() => {
+    setAppState(AppState.currentState);
+    if ((AppState.currentState === 'background')) {
+      BackHandler.exitApp();
+    }
+  }, [appState]);
+  console.error(appState);
 
   React.useEffect(() => {
     const checkLogin = async () => {
@@ -42,42 +57,39 @@ export default function App() {
             setIsLoading(false);
           }
         } catch (error) {
-          if (error.response.data.status === 403) {
-            const refreshToken = await AsyncStorage.getItem('refresh_token');
-            const parsedRefreshToken = JSON.parse(refreshToken);
-            const {refreshToken: currentRefreshToken} = parsedRefreshToken;
+          const refreshToken = await AsyncStorage.getItem('refresh_token');
+          const parsedRefreshToken = JSON.parse(refreshToken);
+          const {refreshToken: currentRefreshToken} = parsedRefreshToken;
 
-            try {
-              const response = await axios.post(
-                'http://172.16.8.112:1337/api/verify-refresh-token',
-                null,
-                {
-                  headers: {
-                    Authorization: `Bearer ${currentRefreshToken}`,
-                  },
+          try {
+            const response = await axios.post(
+              'http://172.16.8.112:1337/api/verify-refresh-token',
+              null,
+              {
+                headers: {
+                  Authorization: `Bearer ${currentRefreshToken}`,
                 },
-              );
-              if (response.status === 200 && response.data.new_acces_token) {
-                const newAccessToken = response.data.new_acces_token;
-                const newToken = JSON.stringify({
-                  accessToken: newAccessToken,
-                });
-                await AsyncStorage.setItem('acces_token', newToken);
+              },
+            );
+            if (response.status === 200 && response.data.new_acces_token) {
+              const newAccessToken = response.data.new_acces_token;
+              const newToken = JSON.stringify({
+                accessToken: newAccessToken,
+              });
+              await AsyncStorage.setItem('acces_token', newToken);
 
-                const originalRequestConfig = error.config;
-                originalRequestConfig.headers.Authorization = `Bearer ${newAccessToken}`;
+              const originalRequestConfig = error.config;
+              originalRequestConfig.headers.Authorization = `Bearer ${newAccessToken}`;
 
-                const refreshedResponse = await axios(originalRequestConfig);
-                setIsLoading(false);
-
-                return refreshedResponse;
-              }
-            } catch (refreshError) {
+              const refreshedResponse = await axios(originalRequestConfig);
               setIsLoading(false);
-              console.error(refreshError.response.data.status);
+
+              return refreshedResponse;
             }
+          } catch (refreshError) {
+            setIsLoading(false);
+            alert('Something');
           }
-          setInitialRouteName('Login');
         }
       } else {
         setInitialRouteName('Login');
@@ -86,7 +98,7 @@ export default function App() {
     };
 
     checkLogin();
-  }, []);
+  });
 
   if (isLoading) {
     return (
