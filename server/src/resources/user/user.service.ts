@@ -35,6 +35,10 @@ class UserService {
             const acces_token = accesToken(user);
             const refresh_token = refreshToken(user);
 
+            user.refresh_token = refresh_token
+            
+            await user.save();
+
             return { acces_token, refresh_token } as Token;
         } catch (error) {
             return next(error);

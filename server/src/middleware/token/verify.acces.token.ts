@@ -8,7 +8,6 @@ const verifyAccessToken = (req: Request & { user?: JWTPayload }, res: Response, 
     try {
         const token:any = req.header("Authorization")?.split(" ")[1];
         if (!token) return next(createError('Access token is required', 401));
-        console.log(token);
         
         const decoded = jwt.verify(token, process.env.JWT_SECRET || "") as JWTPayload;
 

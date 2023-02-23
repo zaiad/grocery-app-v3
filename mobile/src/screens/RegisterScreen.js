@@ -2,24 +2,25 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {Button, Input} from 'react-native-elements';
+import {Keyboard} from 'react-native/Libraries/Components/Keyboard/Keyboard';
 import {validate} from '../utils/validator';
-
-// Now you can access your environment variables like so:
 
 const RegisterScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [err, setError] = useState({name: '', email: '', password: ''});
+
   const handleRegister = async () => {
     result = validate(name, email, password);
-    if (result) {
+
+    if (result.name || result.email || result.password) {
       setError(result);
     }
 
     try {
       const response = await axios.post(
-        `http://192.168.43.66:1337/api/register`,
+        `http://172.16.8.112:1337/api/register`,
         {
           name,
           email,
@@ -30,9 +31,8 @@ const RegisterScreen = ({navigation}) => {
         return navigation.navigate('Verify', {email: email});
       }
     } catch (error) {
-      if (axios.isAxiosError(error) && error.response?.status === 409) {
-        alert('Email already exist');
-      }
+      alert(error.response.data.message);
+      Keyboard.dismiss();
     }
   };
 
@@ -96,7 +96,7 @@ const styles = {
     padding: 20,
   },
   title: {
-    fontSize: 24,
+    fontSize: 35,
     fontWeight: 'bold',
     marginBottom: 20,
   },
@@ -104,7 +104,7 @@ const styles = {
     borderBottomWidth: 0,
     backgroundColor: '#f2f2f2',
     borderRadius: 10,
-    marginBottom: 20,
+    marginBottom: 0,
     paddingVertical: 5,
     paddingHorizontal: 10,
   },
@@ -137,7 +137,8 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 10,
-    marginBottom: 20,
+    marginBottom: 5,
+    marginTop: 35,
   },
   buttonWrapper: {
     flex: 1,

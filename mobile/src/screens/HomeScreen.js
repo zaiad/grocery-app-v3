@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useState} from 'react';
 
 import {
@@ -52,25 +53,12 @@ const HomeScreen = ({navigation}) => {
       price: '14',
       image: require('../assets/images/products/tomate.png'),
     },
-
   ];
 
   return (
     <View style={{flex: 1}}>
       <ScrollView>
-        {product.map(p => {
-          return (
-            <View>
-              <Product
-                title={p.title}
-                descreption={p.descreption}
-                price={`${p.price}.00 DH`}
-                image={p.image}
-              />
-              <Line />
-            </View>
-          );
-        })}
+        <Text>Home Page</Text>
       </ScrollView>
       <Footer navigation={navigation} />
     </View>
@@ -79,3 +67,4 @@ const HomeScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({});
 export default HomeScreen;
+

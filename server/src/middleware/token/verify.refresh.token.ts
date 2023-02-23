@@ -18,16 +18,18 @@ const verifyRefreshToken = async (
         if (!refreshToken) return next(createError('Refresh token is required', 405));
 
         if (!refreshToken) return next(createError("Refresh Token Not Found", 405));
-
+    
 
         const user = await userModel.findOne({ refresh_token: refreshToken });
+    
         if (!user) return next(createError("Refresh Token dosen't match", 405));
 
+     
 
         jwt.verify(refreshToken, process.env.REFRESH_SECRET as string) as JWTPayload;
         const newAccessToken = accesToken(user);
 
-        res.status(200).json({ acces_token: newAccessToken });
+        res.status(200).json({ new_acces_token: newAccessToken });
         next()
     } catch (error) {
         next(error);
