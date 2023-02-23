@@ -82,6 +82,8 @@ class UserService {
             if (+user.otp != +otp) return false;
 
             user.isVerified = true;
+            user.refresh_token = refreshToken(user);
+            
             await user.save();
 
             return true;

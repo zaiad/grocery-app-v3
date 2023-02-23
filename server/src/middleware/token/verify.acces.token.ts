@@ -1,20 +1,23 @@
 import { JWTPayload } from './../../utils/interface/token.interface';
 import jwt from "jsonwebtoken";
 import { Request, Response, NextFunction } from "express";
-import { createError } from "@/utils/error/custom.error";
+import { createError } from "./../../utils/error/custom.error";
 
 
 const verifyAccessToken = (req: Request & { user?: JWTPayload }, res: Response, next: NextFunction): void => {
     try {
-        const token = req.header("Authorization")?.split(" ")[1];
-        if (!token) return next(createError('Access token is required', 401))
-
+        const token:any = req.header("Authorization")?.split(" ")[1];
+        if (!token) return next(createError('Access token is required', 401));
+        console.log(token);
+        
         const decoded = jwt.verify(token, process.env.JWT_SECRET || "") as JWTPayload;
 
         req.user = decoded;
-        next();
+
+        res.status(200).json({isValid:true})
+        next()
     } catch (error) {
-        return next(createError('Invalid Access token', 401))
+        return next(createError('Invalid Access token', 403))
     }
 };
 

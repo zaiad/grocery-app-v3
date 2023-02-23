@@ -13,7 +13,7 @@ function accesToken(user: User): string {
         },
         process.env.JWT_SECRET || '',
         {
-            expiresIn: '1h',
+            expiresIn: '1s',
         }
     );
     return acces_token;
