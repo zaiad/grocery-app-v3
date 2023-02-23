@@ -15,7 +15,7 @@ const OtpScreen = ({route, navigation}) => {
   const handleVerify = async () => {
     try {
       const response = await axios.post(
-        `http://192.168.43.66:1337/api/verify-otp`,
+        `http://172.16.8.112:1337/api/verify-otp`,
         {
           otp: code,
           email,
