@@ -70,10 +70,10 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     paddingHorizontal: 20,
     paddingVertical: 6,
-    width: 130,
+    width: 120,
   },
   btn_text: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: '500',
     color: 'white',
   },
