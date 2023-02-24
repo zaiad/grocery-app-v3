@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {View, Text, Button, ActivityIndicator} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import ExitApp from 'react-native-exit-app';
 
 function ProfileScreen({navigation}) {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -11,10 +12,8 @@ function ProfileScreen({navigation}) {
     await AsyncStorage.removeItem('refresh_token');
 
     setTimeout(() => {
-      navigation.reset({
-        routes: [{name: 'Login'}],
-      });
-    }, 4000);
+      ExitApp.exitApp(); // Add this line to close the app
+    }, 2000);
   };
 
   if (isLoading) {
@@ -23,7 +22,7 @@ function ProfileScreen({navigation}) {
         <Text style={{marginTop: 20}}>
           <ActivityIndicator size={'large'} />
         </Text>
-        <Text> Loginout...</Text>
+        <Text> Logout...</Text>
       </View>
     );
   }
