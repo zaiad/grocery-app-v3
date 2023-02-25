@@ -1,9 +1,14 @@
 import React, {useState} from 'react';
-
 import {Text, View, TouchableOpacity, Image, StyleSheet} from 'react-native';
-import Counter from '../components/Counter';
+import {useDispatch} from 'react-redux';
+import {deleteProduct} from '../redux/features/CartSlice';
 
 const CartItem = props => {
+  const dispatch = useDispatch();
+
+  const deleteFromCart = () => {
+    dispatch(deleteProduct(props.id));
+  };
   return (
     <View style={styles.container}>
       {/* First Box */}
@@ -16,19 +21,16 @@ const CartItem = props => {
       {/* Second Box */}
       <View style={styles.box}>
         <View style={styles.product_text}>
-          <Text></Text>
           <Text style={styles.text}>{props.title}</Text>
           <Text style={styles.qnt}>Quantity: {props.quantity}</Text>
-          <Counter />
         </View>
       </View>
 
       {/* third Box */}
       <View style={styles.box}>
         <View style={styles.product_text}>
-          <Text></Text>
           <Text style={styles.product_price}>{props.price} / Kg</Text>
-          <TouchableOpacity style={styles.add_btn}>
+          <TouchableOpacity style={styles.add_btn} onPress={deleteFromCart}>
             <Text style={styles.btn_text}>Delete</Text>
           </TouchableOpacity>
         </View>
@@ -60,7 +62,8 @@ const styles = StyleSheet.create({
   product_title: {},
   product_text: {
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
+    marginTop: 25,
   },
   text: {
     fontWeight: 'bold',
@@ -90,6 +93,7 @@ const styles = StyleSheet.create({
   qnt: {
     fontSize: 15,
     marginStart: 9,
+    fontWeight: 'bold',
   },
 });
 export default CartItem;
