@@ -52,6 +52,10 @@ class UserService {
         next: NextFunction
     ): Promise<boolean | void> {
         try {
+            const existingUser = await this.User.findOne({ email });
+            if (existingUser) {
+                return next(createError("Email already exists", 409));
+            }
 
 
             const otp = generateOTP();

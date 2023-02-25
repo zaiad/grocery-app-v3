@@ -37,12 +37,6 @@ class UserController {
         try {
             const { name, email, password } = req.body;
 
-            // Check if user already exists
-            const existingUser = await this.User.findOne({ email });
-            if (existingUser) {
-                return next(createError("Email already exists", 409));
-            }
-
             // Create new user
             const newUser = await this.UserService.register(name, email, password, next);
             if (!newUser) {
