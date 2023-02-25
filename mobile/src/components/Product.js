@@ -5,13 +5,13 @@ import {Text, View, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import Counter from '../components/Counter';
 import { addProduct } from '../redux/features/CartSlice';
 
-const Product = ({ title, description, price, image }) => {
+const Product = ({id, title, description, price, image }) => {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(0);
 
   const handleAddToCart = () => {
     if (quantity > 0) {
-      dispatch(addProduct({ title, description, price, image, quantity }));
+      dispatch(addProduct({ id, title, description, price, image, quantity }));
       setQuantity(0); // reset the quantity to zero after adding to cart
     }
   };

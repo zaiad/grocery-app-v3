@@ -17,6 +17,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function CartScreen({navigation}) {
   const [totalCart, settotalCart] = useState(0);
+  
   const goToCheckout = () => {
     navigation.navigate('Checkout');
   };
@@ -45,6 +46,7 @@ export default function CartScreen({navigation}) {
             return (
               <View style={styles.container} key={index}>
                 <CartItem
+                  id={p.id}
                   title={p.title}
                   descreption={p.descreption}
                   price={`${p.price}.00 DH`}

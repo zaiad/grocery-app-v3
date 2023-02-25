@@ -17,22 +17,25 @@ import Product from '../components/Product';
 const HomeScreen = ({ navigation }) => {
   const products = [
     {
+      id:1,
       title: 'Tomate',
       description: 'This is tomate description',
-      price: '14',
+      price: '12',
       image: require('../assets/images/products/tomate.png'),
     },
     {
+      id:2,
       title: 'Potato',
       description: 'This is potato description',
-      price: '14',
-      image: require('../assets/images/products/tomate.png'),
+      price: '7',
+      image: require('../assets/images/products/potato.png'),
     },
     {
+      id:3,
       title: 'Carrots',
       description: 'This is carrots description',
-      price: '14',
-      image: require('../assets/images/products/tomate.png'),
+      price: '4',
+      image: require('../assets/images/products/carrot.png'),
     },
   ];
 
