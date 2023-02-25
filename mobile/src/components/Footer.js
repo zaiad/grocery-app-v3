@@ -12,8 +12,7 @@ import { useSelector } from 'react-redux';
 export default function Footer({ navigation }) {
   const products = useSelector(state => state.cart.products);
 
-  // calculate the count of products in the cart
-  const cartCount = products.reduce((count, product) => count + product.quantity, 0);
+  const cartCount =  products.length;
 
   return (
     <View style={styles.container}>
