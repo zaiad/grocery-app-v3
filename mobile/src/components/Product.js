@@ -1,23 +1,46 @@
 import React, {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import {useDispatch} from 'react-redux';
 
-import {Text, View, TouchableOpacity, Image, StyleSheet} from 'react-native';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  Modal,
+  StyleSheet,
+} from 'react-native';
 import Counter from '../components/Counter';
-import { addProduct } from '../redux/features/CartSlice';
+import {addProduct} from '../redux/features/CartSlice';
 
-const Product = ({id, title, description, price, image }) => {
+const Product = ({id, title, description, price, image}) => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(0);
 
   const handleAddToCart = () => {
     if (quantity > 0) {
-      dispatch(addProduct({ id, title, description, price, image, quantity }));
-      setQuantity(0); // reset the quantity to zero after adding to cart
+      dispatch(addProduct({id, title, description, price, image, quantity}));
+      setQuantity(0);
+      setModalVisible(true);
+      setTimeout(() => {
+        setModalVisible(false);
+      }, 1500);
     }
   };
 
   return (
     <View style={styles.container}>
+      <Modal
+        visible={modalVisible}
+        animationType="slide"
+        transparent={true}
+        onRequestClose={() => setModalVisible(false)}>
+        <View style={styles.modalContainer}>
+          <Text style={styles.modalText}>Product added to cart!</Text>
+          {/* display the product info */}
+        </View>
+      </Modal>
       {/* First Box */}
       <View style={styles.box}>
         <View>
@@ -45,7 +68,6 @@ const Product = ({id, title, description, price, image }) => {
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -94,6 +116,20 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     color: 'black',
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 600,
+    marginTop: 20,
+    backgroundColor: 'white',
+  },
+
+  modalText: {
+    fontSize: 22,
+    color: '#54B415',
+    fontWeight: 'bold',
   },
 });
 export default Product;
