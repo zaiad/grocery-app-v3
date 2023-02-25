@@ -43,31 +43,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
   },
   images: {
-    width: 110,
-    height: 110,
+    width: 70,
+    height: 70,
     backgroundColor: '#EEC4C4',
     borderRadius: 6,
-    marginTop: 40,
-    marginLeft: 5,
   },
   box: {
-    width: 250,
-    height: 150,
+    width: 200,
+    height: 69,
     margin: 10,
     flex: 1,
   },
-  product_title: {},
   product_text: {
     flex: 1,
-    justifyContent: 'space-around',
-    marginTop: 25,
+    justifyContent: 'space-between',
   },
   text: {
     fontWeight: 'bold',
-    fontSize: 19,
+    fontSize: 17,
     fontFamily: 'poppins',
     color: 'black',
     marginStart: 9,
@@ -91,9 +87,8 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   qnt: {
-    fontSize: 15,
+    fontSize: 14,
     marginStart: 9,
-    fontWeight: 'bold',
   },
 });
 export default CartItem;
