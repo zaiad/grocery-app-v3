@@ -10,15 +10,13 @@ import {
 import BTN_PLUS from '../assets/icons/ic_button_min.svg';
 import BTN_MIN from '../assets/icons/ic_button_plus.svg';
 
-export default function Counter() {
-  const [counter, setCounter] = useState(0);
-
+export default function Counter({quantity, setQuantity}) {
   const increase = () => {
-    setCounter(count => count + 1);
+    setQuantity(count => count + 1);
   };
 
   const decrease = () => {
-    counter <= 0 ? setCounter(0) : setCounter(count => count - 1);
+    setQuantity(count => (count > 0 ? count - 1 : 0));
   };
 
   return (
@@ -30,7 +28,7 @@ export default function Counter() {
         />
       </TouchableOpacity>
 
-      <Text style={styles.counter}>{counter}</Text>
+      <Text style={styles.counter}>{quantity}</Text>
       <TouchableOpacity onPress={increase}>
         <Image
           style={styles.plus_btn}

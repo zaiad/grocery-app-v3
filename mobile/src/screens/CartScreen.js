@@ -12,6 +12,8 @@ import CartItem from '../components/CartItem';
 import Footer from '../components/Footer';
 import Line from '../components/Line';
 import Product from '../components/Product';
+import {useSelector} from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function CartScreen({navigation}) {
   const [totalCart, settotalCart] = useState(0);
@@ -19,33 +21,35 @@ export default function CartScreen({navigation}) {
     navigation.navigate('Checkout');
   };
 
-  const product = [
-    {
-      title: 'Tomate',
-      descreption: 'This is tomte descreption',
-      price: '14',
-      image: require('../assets/images/products/tomate.png'),
-    },
-    {
-      title: 'Tomate',
-      descreption: 'This is tomte descreption',
-      price: '14',
-      image: require('../assets/images/products/tomate.png'),
-    },
-  ];
+  React.useEffect(() => {
+    saveToCart = async () => {
+      await AsyncStorage.setItem('cart', JSON.stringify(product));
+    };
+    saveToCart();
+  }, [product]);
+
+  const product = useSelector(state => state.cart.products);
+
+  React.useEffect(() => {
+    const cartTotal = product.reduce((accumulator, item) => {
+      return accumulator + item.price * item.quantity;
+    }, 0);
+    settotalCart(cartTotal);
+  }, [product]);
 
   return (
     <View style={{flex: 1}}>
       <ScrollView style={{backgroundColor: '#F7F7F7'}}>
         <View>
-          {product.map(p => {
+          {product.map((p, index) => {
             return (
-              <View style={styles.container}>
+              <View style={styles.container} key={index}>
                 <CartItem
                   title={p.title}
                   descreption={p.descreption}
                   price={`${p.price}.00 DH`}
                   image={p.image}
+                  quantity={p.quantity}
                 />
               </View>
             );
@@ -53,7 +57,7 @@ export default function CartScreen({navigation}) {
         </View>
       </ScrollView>
       <View style={styles.place_oredr_container}>
-        <Text style={styles.total_price}>Total: {totalCart}</Text>
+        <Text style={styles.total_price}>Total: {totalCart}.00 Dhs</Text>
         <TouchableOpacity onPress={goToCheckout} style={styles.place_order_btn}>
           <Text style={styles.text_place_order}>Place Order</Text>
         </TouchableOpacity>

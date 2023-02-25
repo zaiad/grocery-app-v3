@@ -81,7 +81,7 @@ export default function App() {
             return refreshedResponse;
           }
         } catch (error) {
-          alert('Something went wrong. Please try again later.');
+          setIsLoading(true)
         }
       }
     } else {
