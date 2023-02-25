@@ -38,7 +38,6 @@ const Product = ({id, title, description, price, image}) => {
         onRequestClose={() => setModalVisible(false)}>
         <View style={styles.modalContainer}>
           <Text style={styles.modalText}>Product added to cart!</Text>
-          {/* display the product info */}
         </View>
       </Modal>
       {/* First Box */}
