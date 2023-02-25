@@ -7,8 +7,14 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
+import { useSelector } from 'react-redux';
 
-export default function Footer({navigation}) {
+export default function Footer({ navigation }) {
+  const products = useSelector(state => state.cart.products);
+
+  // calculate the count of products in the cart
+  const cartCount = products.reduce((count, product) => count + product.quantity, 0);
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -22,10 +28,17 @@ export default function Footer({navigation}) {
       <TouchableOpacity
         mouseEnterDelay={1000}
         onPress={() => navigation.navigate('Cart')}>
-        <Image
-          style={styles.images}
-          source={require('../assets/icons/cart.png')}
-        />
+        <View style={{ position: 'relative' }}>
+          <Image
+            style={styles.images}
+            source={require('../assets/icons/cart.png')}
+          />
+          {cartCount > 0 && (
+            <View style={styles.badge}>
+              <Text style={styles.badgeText}>{cartCount}</Text>
+            </View>
+          )}
+        </View>
       </TouchableOpacity>
       <TouchableOpacity
         mouseEnterDelay={1000}
@@ -61,5 +74,22 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
+  },
+  badge: {
+    position: 'absolute',
+    top: -5,
+    right: -5,
+    minWidth: 18,
+    height: 18,
+    borderRadius: 9,
+    backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  badgeText: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: 'white',
+    textAlign: 'center',
   },
 });
