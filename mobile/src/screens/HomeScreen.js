@@ -50,6 +50,7 @@ const HomeScreen = ({ navigation }) => {
         ))}
       </ScrollView>
       <Footer navigation={navigation} />
+      
     </View>
   );
 };
