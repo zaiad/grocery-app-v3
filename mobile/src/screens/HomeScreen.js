@@ -14,50 +14,42 @@ import Footer from '../components/Footer';
 import Line from '../components/Line';
 import Product from '../components/Product';
 
-const HomeScreen = ({navigation}) => {
-  const product = [
+const HomeScreen = ({ navigation }) => {
+  const products = [
     {
       title: 'Tomate',
-      descreption: 'This is tomte descreption',
+      description: 'This is tomate description',
       price: '14',
       image: require('../assets/images/products/tomate.png'),
     },
     {
-      title: 'Tomate',
-      descreption: 'This is tomte descreption',
+      title: 'Potato',
+      description: 'This is potato description',
       price: '14',
       image: require('../assets/images/products/tomate.png'),
     },
     {
-      title: 'Tomate',
-      descreption: 'This is tomte descreption',
+      title: 'Carrots',
+      description: 'This is carrots description',
       price: '14',
       image: require('../assets/images/products/tomate.png'),
     },
-
-
   ];
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <ScrollView>
-        {product.map(p => {
-          return (
-            <View>
-              <Product
-                title={p.title}
-                descreption={p.descreption}
-                price={`${p.price}.00 DH`}
-                image={p.image}
-              />
-              <Line />
-            </View>
-          );
-        })}
+        {products.map((product, index) => (
+          <View key={index}>
+            <Product {...product} />
+            <Line />
+          </View>
+        ))}
       </ScrollView>
       <Footer navigation={navigation} />
     </View>
   );
 };
+
 
 export default HomeScreen;

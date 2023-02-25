@@ -1,31 +1,43 @@
 import React, {useState} from 'react';
+import { useDispatch } from 'react-redux';
 
 import {Text, View, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import Counter from '../components/Counter';
+import { addProduct } from '../redux/features/CartSlice';
 
-const Product = props => {
+const Product = ({ title, description, price, image }) => {
+  const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(0);
+
+  const handleAddToCart = () => {
+    if (quantity > 0) {
+      dispatch(addProduct({ title, description, price, image, quantity }));
+      setQuantity(0); // reset the quantity to zero after adding to cart
+    }
+  };
+
   return (
     <View style={styles.container}>
       {/* First Box */}
       <View style={styles.box}>
         <View>
-          <Image style={styles.images} source={props.image} />
+          <Image style={styles.images} source={image} />
         </View>
       </View>
 
       {/* Second Box */}
       <View style={styles.box}>
         <View style={styles.product_text}>
-          <Text style={styles.text}>{props.title}</Text>
-          <Counter />
+          <Text style={styles.text}>{title}</Text>
+          <Counter quantity={quantity} setQuantity={setQuantity} />
         </View>
       </View>
 
       {/* third Box */}
       <View style={styles.box}>
         <View style={styles.product_text}>
-          <Text style={styles.product_price}>{props.price}</Text>
-          <TouchableOpacity  style={styles.add_btn}>
+          <Text style={styles.product_price}>{price}.00 dhs</Text>
+          <TouchableOpacity style={styles.add_btn} onPress={handleAddToCart}>
             <Text style={styles.btn_text}>Add To Cart</Text>
           </TouchableOpacity>
         </View>
@@ -33,6 +45,7 @@ const Product = props => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {

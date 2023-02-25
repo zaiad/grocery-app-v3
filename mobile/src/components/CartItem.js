@@ -2,10 +2,8 @@ import React, {useState} from 'react';
 
 import {Text, View, TouchableOpacity, Image, StyleSheet} from 'react-native';
 import Counter from '../components/Counter';
-import AntIcon from 'react-native-vector-icons/AntDesign';
 
 const CartItem = props => {
-  const [quantity, Setquantity] = useState(1);
   return (
     <View style={styles.container}>
       {/* First Box */}
@@ -20,7 +18,7 @@ const CartItem = props => {
         <View style={styles.product_text}>
           <Text></Text>
           <Text style={styles.text}>{props.title}</Text>
-          <Text style={styles.qnt}>Quantity: {quantity}</Text>
+          <Text style={styles.qnt}>Quantity: {props.quantity}</Text>
           <Counter />
         </View>
       </View>
