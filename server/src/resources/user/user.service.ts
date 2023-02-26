@@ -16,7 +16,7 @@ class UserService {
         email: string,
         password: string,
         next: NextFunction
-    ): Promise<Token | void> {
+    ) {
         try {
             const user = await this.User.findOne({ email });
             if (!user)
@@ -33,7 +33,7 @@ class UserService {
             const refresh_token = refreshToken(user);
 
             user.refresh_token = refresh_token
-            
+
             await user.save();
 
             return { acces_token, refresh_token } as Token;
@@ -47,7 +47,7 @@ class UserService {
         email: string,
         password: string,
         next: NextFunction
-    ): Promise<boolean | void> {
+    ) {
         try {
             const existingUser = await this.User.findOne({ email });
             if (existingUser) {
@@ -88,7 +88,7 @@ class UserService {
 
             user.isVerified = true;
             user.refresh_token = refreshToken(user);
-            
+
             await user.save();
 
             return true;
