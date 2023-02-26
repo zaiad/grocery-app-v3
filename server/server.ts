@@ -5,25 +5,19 @@ import dotenv from "dotenv";
 import compression from 'compression';
 import helmet from 'helmet';
 import * as initDB from './src/config/db';
-import session from 'express-session';
 
 
 initDB;
 dotenv.config();
 
 import userRouter from './src/resources/user/user.route'
+import productRouter from './src/resources/product/product.route'
 import ErrorHandler from "./src/middleware/error/error.handler";
 
 const app = express();
-app.get('/',(req,res)=>{
-  res.send('hello')
-})
 
-app.use(session({
-  secret: 'my secret',
-  resave: false,
-  saveUninitialized: true,
-}));
+
+
 
 app.use(helmet());
 app.use(cookieParser());
@@ -31,6 +25,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/api', userRouter)
+app.use('/api', productRouter)
 
 app.use(compression())
 app.use(ErrorHandler)

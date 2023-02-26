@@ -1,3 +1,4 @@
+import { Token } from './../../utils/interface/jwt.interface';
 import { sendConfirmationEmail } from "../../utils/otp/send.otp.code";
 import { generateOTP } from "../../utils/otp/generate.otp";
 import accesToken from "../../utils/token/generate.acces.token";
@@ -7,10 +8,6 @@ import UserModel from "./user.model";
 import bcrypt from "bcryptjs";
 import refreshToken from "../../utils/token/generate.refresh.token";
 
-interface Token {
-    acces_token: string;
-    refresh_token: string;
-}
 
 class UserService {
     private User = UserModel;
