@@ -9,6 +9,7 @@ MERGED from [com.facebook.flipper:flipper-network-plugin:0.125.0] C:\Users\SIMO\
 MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.125.0] C:\Users\SIMO\.gradle\caches\transforms-3\6776eefd349b41e85697ac1a85c33edd\transformed\jetified-flipper-fresco-plugin-0.125.0\AndroidManifest.xml:8:1-15:12
 MERGED from [com.facebook.flipper:flipper:0.125.0] C:\Users\SIMO\.gradle\caches\transforms-3\4b33b5e0a3553e4713dfaf342b84d803\transformed\jetified-flipper-0.125.0\AndroidManifest.xml:8:1-18:12
 MERGED from [:react-native-exit-app] C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\node_modules\react-native-exit-app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
+MERGED from [:react-native-fast-image] C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\node_modules\react-native-fast-image\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-safe-area-context] C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-screens] C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-svg] C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\node_modules\react-native-svg\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
@@ -38,6 +39,8 @@ MERGED from [androidx.appcompat:appcompat:1.4.1] C:\Users\SIMO\.gradle\caches\tr
 MERGED from [androidx.sqlite:sqlite-framework:2.1.0] C:\Users\SIMO\.gradle\caches\transforms-3\6610b18a282bad0a19918bdf78934cd7\transformed\sqlite-framework-2.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat-resources:1.4.1] C:\Users\SIMO\.gradle\caches\transforms-3\79ee68175916317b77e82d8417685a1d\transformed\jetified-appcompat-resources-1.4.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.autofill:autofill:1.1.0] C:\Users\SIMO\.gradle\caches\transforms-3\6660442dac6f5d93c62aef014c65d364\transformed\jetified-autofill-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.bumptech.glide:okhttp3-integration:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\05d7192d734bc17fe792b1f9c0f4b931\transformed\jetified-okhttp3-integration-4.12.0\AndroidManifest.xml:2:1-16:12
+MERGED from [com.github.bumptech.glide:glide:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\342d4cc57712cc883e06af1b520a40ba\transformed\jetified-glide-4.12.0\AndroidManifest.xml:2:1-12:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\SIMO\.gradle\caches\transforms-3\34df4b81bce160c31107e06575babcf6\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment:1.3.6] C:\Users\SIMO\.gradle\caches\transforms-3\cfaca6683c157a246b7082fdd393072d\transformed\fragment-1.3.6\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.activity:activity:1.2.4] C:\Users\SIMO\.gradle\caches\transforms-3\28c63c578ac233efa7bf354c1e7d89d2\transformed\jetified-activity-1.2.4\AndroidManifest.xml:17:1-24:12
@@ -65,6 +68,8 @@ MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\SIMO\.gradle\c
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] C:\Users\SIMO\.gradle\caches\transforms-3\fceb3425f18ac2e858c2a36f35c3434a\transformed\jetified-lifecycle-viewmodel-savedstate-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\SIMO\.gradle\caches\transforms-3\8fb34dc1b2e05b2791e0a53cbaa5464e\transformed\jetified-savedstate-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\SIMO\.gradle\caches\transforms-3\77c553b2e843fa6189589e1cd693774e\transformed\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\6dc7489ae13f7b4b8bfc050ccecd4db8\transformed\jetified-gifdecoder-4.12.0\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.exifinterface:exifinterface:1.2.0] C:\Users\SIMO\.gradle\caches\transforms-3\ddfd91cd970ae2f295188cfef9f13dc5\transformed\exifinterface-1.2.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\SIMO\.gradle\caches\transforms-3\440af3b3541797fc2127022a57bd29f8\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\SIMO\.gradle\caches\transforms-3\ca3e6b8347e421fbf9571530bfea0b74\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\SIMO\.gradle\caches\transforms-3\53a224794a7d094e3ea97baf0d248cde\transformed\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
@@ -108,6 +113,10 @@ MERGED from [com.facebook.soloader:soloader:0.10.4] C:\Users\SIMO\.gradle\caches
 MERGED from [com.facebook.soloader:soloader:0.10.4] C:\Users\SIMO\.gradle\caches\transforms-3\03e38d0b09151b30c804738b4e391b63\transformed\jetified-soloader-0.10.4\AndroidManifest.xml:11:5-20
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\SIMO\.gradle\caches\transforms-3\2643e6905ef1b376f802cb26a36d3449\transformed\material-1.1.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\SIMO\.gradle\caches\transforms-3\2643e6905ef1b376f802cb26a36d3449\transformed\material-1.1.0\AndroidManifest.xml:22:5-20
+MERGED from [com.github.bumptech.glide:okhttp3-integration:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\05d7192d734bc17fe792b1f9c0f4b931\transformed\jetified-okhttp3-integration-4.12.0\AndroidManifest.xml:10:5-14:19
+MERGED from [com.github.bumptech.glide:okhttp3-integration:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\05d7192d734bc17fe792b1f9c0f4b931\transformed\jetified-okhttp3-integration-4.12.0\AndroidManifest.xml:10:5-14:19
+MERGED from [com.github.bumptech.glide:glide:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\342d4cc57712cc883e06af1b520a40ba\transformed\jetified-glide-4.12.0\AndroidManifest.xml:10:5-20
+MERGED from [com.github.bumptech.glide:glide:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\342d4cc57712cc883e06af1b520a40ba\transformed\jetified-glide-4.12.0\AndroidManifest.xml:10:5-20
 MERGED from [androidx.emoji2:emoji2:1.0.0] C:\Users\SIMO\.gradle\caches\transforms-3\35e83281cd51be6b92caa287fcbb4f38\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:25:5-35:19
 MERGED from [androidx.emoji2:emoji2:1.0.0] C:\Users\SIMO\.gradle\caches\transforms-3\35e83281cd51be6b92caa287fcbb4f38\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:25:5-35:19
 MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\SIMO\.gradle\caches\transforms-3\dc48d2425887d4c59723398591658943\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:25:5-35:19
@@ -116,6 +125,8 @@ MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\SIMO\.gradle\cache
 MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\SIMO\.gradle\caches\transforms-3\611fcdf7a3a4d753f6a0be2c54cfd628\transformed\jetified-startup-runtime-1.0.0\AndroidManifest.xml:25:5-31:19
 MERGED from [androidx.core:core:1.7.0] C:\Users\SIMO\.gradle\caches\transforms-3\0d8d81f6b572192987f2f410f9927e3a\transformed\core-1.7.0\AndroidManifest.xml:24:5-89
 MERGED from [androidx.core:core:1.7.0] C:\Users\SIMO\.gradle\caches\transforms-3\0d8d81f6b572192987f2f410f9927e3a\transformed\core-1.7.0\AndroidManifest.xml:24:5-89
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\6dc7489ae13f7b4b8bfc050ccecd4db8\transformed\jetified-gifdecoder-4.12.0\AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\6dc7489ae13f7b4b8bfc050ccecd4db8\transformed\jetified-gifdecoder-4.12.0\AndroidManifest.xml:9:5-20
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\SIMO\.gradle\caches\transforms-3\ca3e6b8347e421fbf9571530bfea0b74\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\SIMO\.gradle\caches\transforms-3\ca3e6b8347e421fbf9571530bfea0b74\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
 	android:appComponentFactory
@@ -126,13 +137,13 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\SI
 	tools:ignore
 		ADDED from C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\android\app\src\debug\AndroidManifest.xml:10:9-48
 	android:roundIcon
-		ADDED from C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\android\app\src\main\AndroidManifest.xml:10:7-52
-		ADDED from C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\android\app\src\main\AndroidManifest.xml:10:7-52
+		ADDED from C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\android\app\src\main\AndroidManifest.xml:10:7-39
+		ADDED from C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\android\app\src\main\AndroidManifest.xml:10:7-39
 	tools:targetApi
 		ADDED from C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\android\app\src\debug\AndroidManifest.xml:9:9-29
 	android:icon
-		ADDED from C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\android\app\src\main\AndroidManifest.xml:9:7-41
-		ADDED from C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\android\app\src\main\AndroidManifest.xml:9:7-41
+		ADDED from C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\android\app\src\main\AndroidManifest.xml:9:7-34
+		ADDED from C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\android\app\src\main\AndroidManifest.xml:9:7-34
 	android:allowBackup
 		ADDED from C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\android\app\src\main\AndroidManifest.xml:11:7-34
 		ADDED from C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\android\app\src\main\AndroidManifest.xml:11:7-34
@@ -180,6 +191,8 @@ MERGED from [com.facebook.flipper:flipper:0.125.0] C:\Users\SIMO\.gradle\caches\
 MERGED from [com.facebook.flipper:flipper:0.125.0] C:\Users\SIMO\.gradle\caches\transforms-3\4b33b5e0a3553e4713dfaf342b84d803\transformed\jetified-flipper-0.125.0\AndroidManifest.xml:11:5-13:41
 MERGED from [:react-native-exit-app] C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\node_modules\react-native-exit-app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-exit-app] C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\node_modules\react-native-exit-app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-fast-image] C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\node_modules\react-native-fast-image\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:react-native-fast-image] C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\node_modules\react-native-fast-image\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-safe-area-context] C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-safe-area-context] C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\node_modules\react-native-safe-area-context\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-screens] C:\Users\SIMO\OneDrive\Desktop\PROJECTS\grocery-app-v3\mobile\node_modules\react-native-screens\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
@@ -238,6 +251,10 @@ MERGED from [androidx.appcompat:appcompat-resources:1.4.1] C:\Users\SIMO\.gradle
 MERGED from [androidx.appcompat:appcompat-resources:1.4.1] C:\Users\SIMO\.gradle\caches\transforms-3\79ee68175916317b77e82d8417685a1d\transformed\jetified-appcompat-resources-1.4.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.autofill:autofill:1.1.0] C:\Users\SIMO\.gradle\caches\transforms-3\6660442dac6f5d93c62aef014c65d364\transformed\jetified-autofill-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.autofill:autofill:1.1.0] C:\Users\SIMO\.gradle\caches\transforms-3\6660442dac6f5d93c62aef014c65d364\transformed\jetified-autofill-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.bumptech.glide:okhttp3-integration:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\05d7192d734bc17fe792b1f9c0f4b931\transformed\jetified-okhttp3-integration-4.12.0\AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:okhttp3-integration:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\05d7192d734bc17fe792b1f9c0f4b931\transformed\jetified-okhttp3-integration-4.12.0\AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:glide:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\342d4cc57712cc883e06af1b520a40ba\transformed\jetified-glide-4.12.0\AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:glide:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\342d4cc57712cc883e06af1b520a40ba\transformed\jetified-glide-4.12.0\AndroidManifest.xml:6:5-8:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\SIMO\.gradle\caches\transforms-3\34df4b81bce160c31107e06575babcf6\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\SIMO\.gradle\caches\transforms-3\34df4b81bce160c31107e06575babcf6\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.3.6] C:\Users\SIMO\.gradle\caches\transforms-3\cfaca6683c157a246b7082fdd393072d\transformed\fragment-1.3.6\AndroidManifest.xml:20:5-22:41
@@ -292,6 +309,10 @@ MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\SIMO\.gradle\caches\
 MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\SIMO\.gradle\caches\transforms-3\8fb34dc1b2e05b2791e0a53cbaa5464e\transformed\jetified-savedstate-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\SIMO\.gradle\caches\transforms-3\77c553b2e843fa6189589e1cd693774e\transformed\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\SIMO\.gradle\caches\transforms-3\77c553b2e843fa6189589e1cd693774e\transformed\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\6dc7489ae13f7b4b8bfc050ccecd4db8\transformed\jetified-gifdecoder-4.12.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\6dc7489ae13f7b4b8bfc050ccecd4db8\transformed\jetified-gifdecoder-4.12.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.exifinterface:exifinterface:1.2.0] C:\Users\SIMO\.gradle\caches\transforms-3\ddfd91cd970ae2f295188cfef9f13dc5\transformed\exifinterface-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.2.0] C:\Users\SIMO\.gradle\caches\transforms-3\ddfd91cd970ae2f295188cfef9f13dc5\transformed\exifinterface-1.2.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\SIMO\.gradle\caches\transforms-3\440af3b3541797fc2127022a57bd29f8\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\SIMO\.gradle\caches\transforms-3\440af3b3541797fc2127022a57bd29f8\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\SIMO\.gradle\caches\transforms-3\ca3e6b8347e421fbf9571530bfea0b74\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
@@ -330,6 +351,12 @@ uses-permission#android.permission.ACCESS_WIFI_STATE
 ADDED from [com.facebook.flipper:flipper:0.125.0] C:\Users\SIMO\.gradle\caches\transforms-3\4b33b5e0a3553e4713dfaf342b84d803\transformed\jetified-flipper-0.125.0\AndroidManifest.xml:16:5-76
 	android:name
 		ADDED from [com.facebook.flipper:flipper:0.125.0] C:\Users\SIMO\.gradle\caches\transforms-3\4b33b5e0a3553e4713dfaf342b84d803\transformed\jetified-flipper-0.125.0\AndroidManifest.xml:16:22-73
+meta-data#com.bumptech.glide.integration.okhttp3.OkHttpGlideModule
+ADDED from [com.github.bumptech.glide:okhttp3-integration:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\05d7192d734bc17fe792b1f9c0f4b931\transformed\jetified-okhttp3-integration-4.12.0\AndroidManifest.xml:11:9-13:43
+	android:value
+		ADDED from [com.github.bumptech.glide:okhttp3-integration:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\05d7192d734bc17fe792b1f9c0f4b931\transformed\jetified-okhttp3-integration-4.12.0\AndroidManifest.xml:13:13-40
+	android:name
+		ADDED from [com.github.bumptech.glide:okhttp3-integration:4.12.0] C:\Users\SIMO\.gradle\caches\transforms-3\05d7192d734bc17fe792b1f9c0f4b931\transformed\jetified-okhttp3-integration-4.12.0\AndroidManifest.xml:12:13-84
 provider#androidx.startup.InitializationProvider
 ADDED from [androidx.emoji2:emoji2:1.0.0] C:\Users\SIMO\.gradle\caches\transforms-3\35e83281cd51be6b92caa287fcbb4f38\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
 MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\SIMO\.gradle\caches\transforms-3\dc48d2425887d4c59723398591658943\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:26:9-34:20

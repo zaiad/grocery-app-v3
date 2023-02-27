@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.app-mergeDebugResources-27:/values-ta/values-ta.xml",
+            "outputFile": "com.app-mergeDebugResources-28:/values-ta/values-ta.xml",
             "map": [
                 {
                     "source": "C:\\Users\\SIMO\\.gradle\\caches\\transforms-3\\b8880fdded47cec5985d61f897e9986d\\transformed\\appcompat-1.4.1\\res\\values-ta\\values-ta.xml",

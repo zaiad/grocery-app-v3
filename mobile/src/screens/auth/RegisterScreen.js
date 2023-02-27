@@ -3,7 +3,8 @@ import React, {useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {Button, Input} from 'react-native-elements';
 import {Keyboard} from 'react-native/Libraries/Components/Keyboard/Keyboard';
-import {validate} from '../utils/validator';
+import {validate} from '../../utils/validator';
+import {IP} from '@env';
 
 const RegisterScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -19,14 +20,11 @@ const RegisterScreen = ({navigation}) => {
     }
 
     try {
-      const response = await axios.post(
-        `http://172.16.8.112:1337/api/register`,
-        {
-          name,
-          email,
-          password,
-        },
-      );
+      const response = await axios.post(`http://${IP}:1337/api/register`, {
+        name,
+        email,
+        password,
+      });
       if (response.status === 201) {
         return navigation.navigate('Verify', {email: email});
       }

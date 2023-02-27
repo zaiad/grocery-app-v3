@@ -11,21 +11,21 @@ import {
 } from 'react-native';
 import Counter from '../components/Counter';
 import {addProduct} from '../redux/features/CartSlice';
+import FastImage from 'react-native-fast-image';
 
-const Product = ({id, title, description, price, image}) => {
+const Product = ({_id, title, price}) => {
   const [modalVisible, setModalVisible] = useState(false);
-
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(0);
 
   const handleAddToCart = () => {
     if (quantity > 0) {
-      dispatch(addProduct({id, title, description, price, image, quantity}));
+      dispatch(addProduct({_id, title, price, quantity}));
       setQuantity(0);
       setModalVisible(true);
       setTimeout(() => {
         setModalVisible(false);
-      }, 1500);
+      }, 1000);
     }
   };
 
@@ -43,7 +43,7 @@ const Product = ({id, title, description, price, image}) => {
       {/* First Box */}
       <View style={styles.box}>
         <View>
-          <Image style={styles.images} source={image} />
+          <Image style={styles.images} source={require('../assets/images/products/potato.png')} />
         </View>
       </View>
 

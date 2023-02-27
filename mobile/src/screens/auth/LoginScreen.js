@@ -2,19 +2,17 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import {View, Text, TextInput, Keyboard, TouchableOpacity} from 'react-native';
 import {Button, Input} from 'react-native-elements';
-import {storeUserSession, getUserSession} from '../utils/store.token';
+import {storeUserSession, getUserSession} from '../../utils/store.token';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {validateLogin} from '../utils/validator.js';
-
+import {validateLogin} from '../../utils/validator.js';
+import {IP} from '@env';
 
 const LoginScreen = ({navigation}) => {
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [err, setError] = useState({password: '', email: ''});
 
   const handleLogin = async () => {
-
     result = validateLogin(email, password);
     if (result?.password || result?.email) {
       setError(result);
@@ -22,13 +20,12 @@ const LoginScreen = ({navigation}) => {
     }
 
     try {
-      const response = await axios.post(`http://172.16.8.112:1337/api/login`, {
+      const response = await axios.post(`http://${IP}:1337/api/login`, {
         email,
         password,
       });
 
       if (response.status === 200) {
-        
         const {acces_token} = response.data;
         const {refresh_token} = response.data;
 
@@ -36,7 +33,6 @@ const LoginScreen = ({navigation}) => {
         navigation.navigate('Home');
       }
     } catch (error) {
-
       alert(error.response.data.message);
       setError({});
       Keyboard.dismiss();

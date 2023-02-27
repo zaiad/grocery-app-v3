@@ -1,59 +1,62 @@
-import React, {useState} from 'react';
-
-import {
-  ScrollView,
-  Text,
-  View,
-  TouchableOpacity,
-  Image,
-  StyleSheet,
-  Button,
-} from 'react-native';
-import Counter from '../components/Counter';
+import axios from 'axios';
+import React, {useState, useEffect} from 'react';
+import {Alert, ScrollView, StyleSheet,ActivityIndicator, View} from 'react-native';
+import {Text} from 'react-native-elements';
 import Footer from '../components/Footer';
 import Line from '../components/Line';
 import Product from '../components/Product';
+import {IP} from '@env';
 
-const HomeScreen = ({ navigation }) => {
-  const products = [
-    {
-      id:1,
-      title: 'Tomate',
-      description: 'This is tomate description',
-      price: '12',
-      image: require('../assets/images/products/tomate.png'),
-    },
-    {
-      id:2,
-      title: 'Potato',
-      description: 'This is potato description',
-      price: '7',
-      image: require('../assets/images/products/potato.png'),
-    },
-    {
-      id:3,
-      title: 'Carrots',
-      description: 'This is carrots description',
-      price: '4',
-      image: require('../assets/images/products/carrot.png'),
-    },
-  ];
+const HomeScreen = ({navigation}) => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function getAllProducts() {
+      try {
+        const response = await axios.get(`http://${IP}:1337/api/product`);
+        if (response.status === 200) {
+          const allProducts = response.data;
+          setProducts(allProducts);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getAllProducts();
+  }, []);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <ScrollView>
-        {products.map((product, index) => (
-          <View key={index}>
-            <Product {...product} />
-            <Line />
+        {products && products.length > 0 ? (
+          products.map((product, index) => (
+            <View key={index}>
+              <Product {...product} />
+              <Line />
+            </View>
+          ))
+        ) : (
+          <View style={styles.container}>
+            <ActivityIndicator size={'large'} style={styles.text}/>
           </View>
-        ))}
+        )}
       </ScrollView>
       <Footer navigation={navigation} />
-      
     </View>
   );
 };
 
-
 export default HomeScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: '#7F8487',
+  },
+});

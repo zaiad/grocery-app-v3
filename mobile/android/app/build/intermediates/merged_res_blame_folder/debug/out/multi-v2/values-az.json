@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.app-mergeDebugResources-27:/values-az/values-az.xml",
+            "outputFile": "com.app-mergeDebugResources-28:/values-az/values-az.xml",
             "map": [
                 {
                     "source": "C:\\Users\\SIMO\\.gradle\\caches\\transforms-3\\0d8d81f6b572192987f2f410f9927e3a\\transformed\\core-1.7.0\\res\\values-az\\values-az.xml",
