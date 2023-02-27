@@ -50,7 +50,6 @@ export default function CartScreen({navigation}) {
                   title={p.title}
                   descreption={p.descreption}
                   price={`${p.price}.00 DH`}
-                  image={p.image}
                   quantity={p.quantity}
                 />
               </View>

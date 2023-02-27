@@ -13,24 +13,23 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
-import LoginScreen from './src/screens/LoginScreen';
-import RegisterScreen from './src/screens/RegisterScreen';
-import VerifyOTP from './src/screens/OTP';
+import LoginScreen from './src/screens/auth/LoginScreen';
+import RegisterScreen from './src/screens/auth/RegisterScreen';
+import VerifyOTP from './src/screens/auth/OTP';
 import HomeScreen from './src/screens/HomeScreen';
 import CartScreen from './src/screens/CartScreen';
 import WishListScreen from './src/screens/WishListScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import {store} from './src/redux/store';
 import {Provider} from 'react-redux';
-
+import {IP} from '@env';
+import CheckoutForm from './src/screens/CheckoutScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [initialRouteName, setInitialRouteName] = React.useState('');
+  const [initialRouteName, setInitialRouteName] = React.useState('Login');
   const [isLoading, setIsLoading] = React.useState(true);
   const [appState, setAppState] = React.useState(AppState.currentState);
-
-
 
   const checkLogin = async () => {
     const token = await AsyncStorage.getItem('acces_token');
@@ -38,7 +37,7 @@ export default function App() {
       const accessToken = JSON.parse(token).accessToken;
       try {
         const response = await axios.post(
-          'http://172.16.8.112:1337/api/verify-acces-token',
+          `http://${IP}:1337/api/verify-acces-token`,
           null,
           {
             headers: {
@@ -57,7 +56,7 @@ export default function App() {
 
         try {
           const response = await axios.post(
-            'http://172.16.8.112:1337/api/verify-refresh-token',
+            `http://${IP}:1337/api/verify-acces-token`,
             null,
             {
               headers: {
@@ -81,7 +80,7 @@ export default function App() {
             return refreshedResponse;
           }
         } catch (error) {
-          setIsLoading(true)
+          setIsLoading(true);
         }
       }
     } else {
@@ -94,22 +93,6 @@ export default function App() {
     checkLogin();
   });
 
-  React.useEffect(() => {
-    checkLogin();
-    const handleAppStateChange = (nextAppState) => {
-      if (nextAppState === 'background') {
-        BackHandler.exitApp();
-      }
-      setAppState(nextAppState);
-    };
-    AppState.addEventListener('change', handleAppStateChange);
-    return () => {
-      AppState.removeEventListener('change', handleAppStateChange);
-    };
-  }, []);
-
-
-  
   if (isLoading) {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
@@ -134,6 +117,8 @@ export default function App() {
           <Stack.Screen name="Cart" component={CartScreen} />
           <Stack.Screen name="WishList" component={WishListScreen} />
           <Stack.Screen name="Profile" component={ProfileScreen} />
+          <Stack.Screen name="Checkout" component={CheckoutForm} />
+          
         </Stack.Navigator>
       </Provider>
     </NavigationContainer>

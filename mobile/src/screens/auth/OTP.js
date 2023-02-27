@@ -7,6 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+import {IP} from "@env"
 
 const OtpScreen = ({route, navigation}) => {
   const [code, setCode] = useState();
@@ -15,7 +16,7 @@ const OtpScreen = ({route, navigation}) => {
   const handleVerify = async () => {
     try {
       const response = await axios.post(
-        `http://172.16.8.112:1337/api/verify-otp`,
+        `http://${IP}:1337/api/verify-otp`,
         {
           otp: code,
           email,

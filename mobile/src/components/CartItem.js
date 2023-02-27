@@ -14,7 +14,7 @@ const CartItem = props => {
       {/* First Box */}
       <View style={styles.box}>
         <View>
-          <Image style={styles.images} source={props.image} />
+          <Image style={styles.images} source={require('../assets/images/products/potato.png')} />
         </View>
       </View>
 

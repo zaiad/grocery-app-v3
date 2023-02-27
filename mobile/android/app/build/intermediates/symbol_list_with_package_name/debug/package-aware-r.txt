@@ -1549,6 +1549,7 @@ id fps_text
 id fragment_container_view_tag
 id ghost_view
 id ghost_view_holder
+id glide_custom_view_target_tag
 id group_divider
 id hideable
 id home
@@ -1872,6 +1873,7 @@ menu example_menu
 menu example_menu2
 mipmap ic_launcher
 mipmap ic_launcher_round
+mipmap logo
 plurals mtrl_badge_content_description
 string abc_action_bar_home_description
 string abc_action_bar_up_description
