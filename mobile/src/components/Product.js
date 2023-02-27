@@ -21,8 +21,10 @@ const Product = ({_id, title, price}) => {
   const handleAddToCart = () => {
     if (quantity > 0) {
       dispatch(addProduct({_id, title, price, quantity}));
+      
       setQuantity(0);
       setModalVisible(true);
+
       setTimeout(() => {
         setModalVisible(false);
       }, 1000);

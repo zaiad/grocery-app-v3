@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {View, Text, Button, ActivityIndicator} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import ExitApp from 'react-native-exit-app';
-import Footer from '../components/Footer';
+import { CommonActions } from '@react-navigation/native';
 
 function ProfileScreen({navigation}) {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -12,6 +11,15 @@ function ProfileScreen({navigation}) {
 
     await AsyncStorage.removeItem('acces_token');
     await AsyncStorage.removeItem('refresh_token');
+    setTimeout(() => {
+      setIsLoading(false);
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [{ name: 'Login' }],
+        })
+      );
+    }, 2000);
   };
 
   if (isLoading) {

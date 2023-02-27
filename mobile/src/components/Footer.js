@@ -10,8 +10,8 @@ import {
 import { useSelector } from 'react-redux';
 
 export default function Footer({ navigation }) {
-  const products = useSelector(state => state.cart.products);
 
+  const products = useSelector(state => state.cart.products);
   const cartCount =  products.length;
 
   return (

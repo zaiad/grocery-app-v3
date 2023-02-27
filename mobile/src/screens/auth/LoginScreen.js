@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import {View, Text, TextInput, Keyboard, TouchableOpacity} from 'react-native';
 import {Button, Input} from 'react-native-elements';
-import {storeUserSession, getUserSession} from '../../utils/store.token';
+import {storeUserToken} from '../../utils/store.token';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {validateLogin} from '../../utils/validator.js';
 import {IP} from '@env';
@@ -13,9 +13,9 @@ const LoginScreen = ({navigation}) => {
   const [err, setError] = useState({password: '', email: ''});
 
   const handleLogin = async () => {
-    result = validateLogin(email, password);
-    if (result?.password || result?.email) {
-      setError(result);
+    let errors = validateLogin(email, password);
+    if (errors?.password || errors?.email) {
+      setError(errors);
       return;
     }
 
@@ -29,19 +29,18 @@ const LoginScreen = ({navigation}) => {
         const {acces_token} = response.data;
         const {refresh_token} = response.data;
 
-        await storeUserSession(acces_token, refresh_token);
+        await storeUserToken(acces_token, refresh_token);
         navigation.navigate('Home');
       }
     } catch (error) {
       alert(error.response.data.message);
-      setError({});
       Keyboard.dismiss();
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Se Connectez</Text>
+      <Text style={styles.title}>Login</Text>
       <Input
         errorMessage={err.email}
         placeholder="Email"
@@ -58,7 +57,7 @@ const LoginScreen = ({navigation}) => {
         autoCapitalize="none"
         inputContainerStyle={styles.inputContainer}
         inputStyle={styles.input}
-        errorMessage={err.password} // Add error message to display under the field
+        errorMessage={err.password}
       />
       <View style={styles.btncontainer}>
         <View style={styles.buttonWrapper}>
@@ -79,9 +78,6 @@ const LoginScreen = ({navigation}) => {
           />
         </View>
       </View>
-      <TouchableOpacity style={styles.forgotPassword}>
-        <Text style={styles.forgotPasswordText}>Forgot password?</Text>
-      </TouchableOpacity>
     </View>
   );
 };

@@ -5,7 +5,6 @@ import { Request, Response, NextFunction } from "express";
 
 class UserController {
     private UserService = new UserService();
-    private User = UserModel;
 
     public login = async (req: Request, res: Response, next: NextFunction) => {
         try {

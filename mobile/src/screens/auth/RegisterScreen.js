@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {Button, Input} from 'react-native-elements';
 import {Keyboard} from 'react-native/Libraries/Components/Keyboard/Keyboard';
-import {validate} from '../../utils/validator';
+import {validateRegister} from '../../utils/validator';
 import {IP} from '@env';
 
 const RegisterScreen = ({navigation}) => {
@@ -13,10 +13,11 @@ const RegisterScreen = ({navigation}) => {
   const [err, setError] = useState({name: '', email: '', password: ''});
 
   const handleRegister = async () => {
-    result = validate(name, email, password);
+    let errors = validateRegister(name, email, password);
 
-    if (result.name || result.email || result.password) {
-      setError(result);
+    if (errors.name || errors.email || errors.password) {
+      setError(errors);
+      return;
     }
 
     try {
