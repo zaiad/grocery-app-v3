@@ -50,20 +50,20 @@ export default function App() {
           setIsLoading(false);
         }
       } catch (error) {
-        const refreshToken = await AsyncStorage.getItem('refresh_token');
-        const parsedRefreshToken = JSON.parse(refreshToken);
-        const {refreshToken: currentRefreshToken} = parsedRefreshToken;
+        const token = await AsyncStorage.getItem('refresh_token');
+        const refreshToken = JSON.parse(token).refreshToken;
 
         try {
           const response = await axios.post(
-            `http://${IP}:1337/api/verify-acces-token`,
+            `http://${IP}:1337/api/verify-refresh-token`,
             null,
             {
               headers: {
-                Authorization: `Bearer ${currentRefreshToken}`,
+                Authorization: `Bearer ${refreshToken}`,
               },
             },
           );
+
           if (response.status === 200 && response.data.new_acces_token) {
             const newAccessToken = response.data.new_acces_token;
             const newToken = JSON.stringify({
@@ -80,7 +80,7 @@ export default function App() {
             return refreshedResponse;
           }
         } catch (error) {
-          setIsLoading(true);
+          alert(error.response.message);
         }
       }
     } else {
@@ -108,7 +108,7 @@ export default function App() {
     <NavigationContainer>
       <Provider store={store}>
         <Stack.Navigator
-          initialRouteName={initialRouteName}
+          initialRouteName={'Checkout'}
           screenOptions={styles.header}>
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
@@ -118,7 +118,6 @@ export default function App() {
           <Stack.Screen name="WishList" component={WishListScreen} />
           <Stack.Screen name="Profile" component={ProfileScreen} />
           <Stack.Screen name="Checkout" component={CheckoutForm} />
-          
         </Stack.Navigator>
       </Provider>
     </NavigationContainer>

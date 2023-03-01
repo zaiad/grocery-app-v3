@@ -1,6 +1,6 @@
 // utils/validation.js
 
-export const validate = (name, email, password) => {
+export const validateRegister = (name, email, password) => {
     const errors = {};
   
     const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;

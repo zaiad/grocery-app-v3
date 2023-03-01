@@ -82,7 +82,7 @@ class UserService {
     ) => {
         try {
             const user = await this.User.findOne({ email });
-            if (!user) return next(createError("User not found", 401));
+            if (!user) return next(createError("User not found", 400));
 
             if (+user.otp != +otp) return false;
 

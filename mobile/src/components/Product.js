@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import Counter from '../components/Counter';
 import {addProduct} from '../redux/features/CartSlice';
-import FastImage from 'react-native-fast-image';
 
 const Product = ({_id, title, price}) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -21,8 +20,10 @@ const Product = ({_id, title, price}) => {
   const handleAddToCart = () => {
     if (quantity > 0) {
       dispatch(addProduct({_id, title, price, quantity}));
+      
       setQuantity(0);
       setModalVisible(true);
+
       setTimeout(() => {
         setModalVisible(false);
       }, 1000);

@@ -7,7 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
-import {IP} from "@env"
+import {IP} from '@env';
 
 const OtpScreen = ({route, navigation}) => {
   const [code, setCode] = useState();
@@ -15,20 +15,15 @@ const OtpScreen = ({route, navigation}) => {
 
   const handleVerify = async () => {
     try {
-      const response = await axios.post(
-        `http://${IP}:1337/api/verify-otp`,
-        {
-          otp: code,
-          email,
-        },
-      );
-      if (response.status === 401)
-        alert('Please try to register with another email adress');
-      if (response.status === 400) alert('Invalid OTP Code');
-      if (response.status === 200) navigation.navigate('Login');
+      const response = await axios.post(`http://${IP}:1337/api/verify-otp`, {
+        otp: code,
+        email,
+      });
 
+      if (response.status === 200) return navigation.navigate('Login');
     } catch (error) {
-      if(error.response?.status === 400) alert('Invalid OTP')
+      if (error.response?.status === 400) return alert('Invalid OTP');
+      alert('Something went wrong')
     }
   };
 
@@ -45,9 +40,7 @@ const OtpScreen = ({route, navigation}) => {
           keyboardType="number-pad"
         />
       </View>
-      <TouchableOpacity style={styles.resendButton}>
-        <Text style={styles.resendButtonText}>Resend Code</Text>
-      </TouchableOpacity>
+
       <TouchableOpacity style={styles.verifyButton} onPress={handleVerify}>
         <Text style={styles.verifyButtonText}>Verify</Text>
       </TouchableOpacity>

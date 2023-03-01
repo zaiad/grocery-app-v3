@@ -1,11 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export async function storeUserSession(accessToken, refreshToken) {
-  const accessTokenExpireAt = new Date();
-  accessTokenExpireAt.setHours(accessTokenExpireAt.getHours() + 1);
-
-  const refreshTokenExpireAt = new Date();
-  refreshTokenExpireAt.setDate(refreshTokenExpireAt.getDate() + 5);
+export async function storeUserToken(accessToken, refreshToken) {
 
   await AsyncStorage.setItem(
     'acces_token',
