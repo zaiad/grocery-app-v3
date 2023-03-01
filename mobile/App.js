@@ -29,7 +29,6 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   const [initialRouteName, setInitialRouteName] = React.useState('Login');
   const [isLoading, setIsLoading] = React.useState(true);
-  const [appState, setAppState] = React.useState(AppState.currentState);
 
   const checkLogin = async () => {
     const token = await AsyncStorage.getItem('acces_token');
@@ -108,7 +107,7 @@ export default function App() {
     <NavigationContainer>
       <Provider store={store}>
         <Stack.Navigator
-          initialRouteName={'Checkout'}
+          initialRouteName={initialRouteName}
           screenOptions={styles.header}>
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
