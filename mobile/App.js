@@ -55,7 +55,7 @@ export default function App() {
 
         try {
           const response = await axios.post(
-            `http://${IP}:1337/api/verify-acces-token`,
+            `http://${IP}:1337/api/verify-refresh-token`,
             null,
             {
               headers: {
@@ -108,7 +108,7 @@ export default function App() {
     <NavigationContainer>
       <Provider store={store}>
         <Stack.Navigator
-          initialRouteName={initialRouteName}
+          initialRouteName={'Checkout'}
           screenOptions={styles.header}>
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />

@@ -1,37 +1,82 @@
-import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import Footer from '../components/Footer';
 
-function CheckoutForm({navigation}) {
-  return (
-    <View style={{flex: 1}}>
+function CheckoutForm({ navigation }) {
+  const [shippingData, setShippingData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+    items: '',
+    totalPrice: '',
+  });
 
-    <View style={styles.container}>
-      <Text style={styles.heading}>Checkout</Text>
-      <View style={styles.formGroup}>
-        <Text style={styles.label}>Name</Text>
-        <TextInput style={styles.input} placeholder="Enter your name" />
+  const cart = useSelector((state) => state.cart.products);
+
+  const handleInputChange = (field, value) => {
+    setShippingData((prevData) => ({ ...prevData, [field]: value }));
+  };
+
+  const handleCheckout = () => {
+    // save shippingData to database or send to server
+    console.log(shippingData);
+  };
+
+  return (
+    <View style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <Text style={styles.heading}>Checkout</Text>
+        <View style={styles.formGroup}>
+          <Text style={styles.label}>Name</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your name"
+            onChangeText={(value) => handleInputChange('name', value)}
+          />
+        </View>
+        <View style={styles.formGroup}>
+          <Text style={styles.label}>Email</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your email"
+            keyboardType="email-address"
+            onChangeText={(value) => handleInputChange('email', value)}
+          />
+        </View>
+        <View style={styles.formGroup}>
+          <Text style={styles.label}>Phone Number</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your phone number"
+            keyboardType="phone-pad"
+            onChangeText={(value) => handleInputChange('phone', value)}
+          />
+        </View>
+        <View style={styles.formGroup}>
+          <Text style={styles.label}>Address</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter your shipping address"
+            onChangeText={(value) => handleInputChange('address', value)}
+          />
+        </View>
+        <TouchableOpacity style={styles.button} onPress={handleCheckout}>
+          <Text style={styles.buttonText}>Proceed To Payment</Text>
+        </TouchableOpacity>
       </View>
-      <View style={styles.formGroup}>
-        <Text style={styles.label}>Email</Text>
-        <TextInput style={styles.input} placeholder="Enter your email" keyboardType="email-address" />
-      </View>
-      <View style={styles.formGroup}>
-        <Text style={styles.label}>Phone Number</Text>
-        <TextInput style={styles.input} placeholder="Enter your phone number" keyboardType="email-address" />
-      </View>
-      <View style={styles.formGroup}>
-        <Text style={styles.label}>Adress</Text>
-        <TextInput style={styles.input} placeholder="Enter your shipping adress" keyboardType="email-address" />
-      </View>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Procces To Payment</Text>
-      </TouchableOpacity>
-      </View>
-      <Footer navigation={navigation}/>
+      <Footer navigation={navigation} />
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -65,12 +110,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#008080',
     padding: 10,
     borderRadius: 5,
+    width: 355,
   },
   buttonText: {
     color: '#fff',
     fontSize: 18,
     textAlign: 'center',
-    fontWeight:'bold'
+    fontWeight: 'bold',
   },
 });
 

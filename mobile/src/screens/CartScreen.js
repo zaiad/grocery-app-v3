@@ -19,7 +19,7 @@ export default function CartScreen({navigation}) {
   const [totalCart, settotalCart] = useState(0);
   
   const goToCheckout = () => {
-    totalCart > 0  ?  navigation.navigate('Checkout') : navigation.navigate('Cart')
+    totalCart > 0  ?  navigation.navigate('Checkout',totalCart) : navigation.navigate('Cart')
   };
 
   React.useEffect(() => {

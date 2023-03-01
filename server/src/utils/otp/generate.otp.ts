@@ -5,7 +5,3 @@ export function generateOTP(): number {
 
 
   
-  8765
-  43443
-  3423
-  2342
